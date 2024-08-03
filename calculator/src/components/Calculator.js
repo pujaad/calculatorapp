@@ -51,7 +51,7 @@ const Calculator=()=>{
     <button onClick={()=>appendToDisplay("*")}>*</button>
     <button onClick={clearDisplay}>C</button>
     <button onClick={()=>appendToDisplay("0")}>0</button>
-    <button onClick={calculate}>=</button>
+    <button onClick={()=>calculate}>=</button>
     <button onClick={()=>appendToDisplay("/")}>/</button>
 </div>
 </div>
