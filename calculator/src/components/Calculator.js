@@ -9,14 +9,17 @@ const Calculator=()=>{
     const clearDisplay=()=>{
         setDisplay("");
     }
-    const calculate=()=>{
-        try{
-        const result=eval(display)
-        setDisplay(result.toString())
-        }catch(Error){
-            setDisplay("Error")
+    const calculate = () => {
+        try {
+            if (display === "0/0") {
+                throw new Error("NaN");  // Manually throw an error for 0/0
+            }
+            const result = eval(display);
+            setDisplay(result.toString());
+        } catch (error) {
+            setDisplay("Error");
         }
-    }
+    };
     return(
         <>
         <div className="calculator">
