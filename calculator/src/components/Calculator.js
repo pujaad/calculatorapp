@@ -11,11 +11,23 @@ const Calculator=()=>{
     }
     const calculate = () => {
         try {
+            if (display === "" || display === "Error") {
+                throw new Error("Incomplete expression");
+            }
             if (display === "0/0") {
-                throw new Error("NaN");  // Manually throw an error for 0/0
+                setDisplay("NaN");
+                return;
             }
             const result = eval(display);
-            setDisplay(result.toString());
+            if (!isFinite(result)) {
+                if (isNaN(result)) {
+                    setDisplay("NaN");
+                } else {
+                    setDisplay("Infinity");
+                }
+            } else {
+                setDisplay(result.toString());
+            }
         } catch (error) {
             setDisplay("Error");
         }
